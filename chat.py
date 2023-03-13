@@ -16,9 +16,12 @@ conversation =   [{"role": "system", "content": """You are  my smart bot assista
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 def main():
+    print("Welcome to the Openai chat!\nIf you want to quit the chat just type 'exit!'\nIf you want to quit chat and save conversation just press ctrl + c and answer y\n")
     while True:
         try:
             user_input = Prompt.ask("User: ")
+            if user_input == "exit!":
+                break
             conversation.append({"role": "user", "content": user_input})
             console.log(f"Bot is thinking...", style=waiting_style)
             response = openai.ChatCompletion.create(
