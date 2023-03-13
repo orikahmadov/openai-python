@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os, colorama
 import openai
 from datetime import datetime
