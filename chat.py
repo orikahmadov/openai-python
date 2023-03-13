@@ -1,4 +1,4 @@
-import os, colorama
+import os
 import openai
 from datetime import datetime
 from rich.console import Console,Style

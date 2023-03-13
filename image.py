@@ -12,6 +12,9 @@ def create_an_image():
         try:
             print("Welcome to the image creator!")
             user_input = input("Describe an image: ")
+            if user_input == "exit!":
+                print("Bye!")
+                break
             n_times =  int(input("How many images do you want to create? "))
             number_of_images = 0
             if n_times > 1:
