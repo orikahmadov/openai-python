@@ -1,4 +1,4 @@
-import os, colorama
+import os
 import openai
 from datetime import datetime
 from rich.console import Console,Style
@@ -16,7 +16,7 @@ conversation =   [{"role": "system", "content": """You are  my smart bot assista
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 def main():
-    print("Welcome to the Openai chat!\nIf you want to quit the chat just type 'exit!'\nIf you want to quit chat and save conversation just press ctrl + c and answer y\n")
+    console.log("Welcome to the Openai chat!\nIf you want to quit the chat just type 'exit!'\nIf you want to quit chat and save conversation just press 'ctrl + c' and answer 'y'\n",style="yellow")
     while True:
         try:
             user_input = Prompt.ask("User: ")
