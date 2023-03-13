@@ -10,7 +10,10 @@ while True:
     console.print("2. Create an image",style="bold cyan")
     console.log("3. Exit",style="bold red")
     print("\n")
+    choices = ["1","2","3"]
     choice = int(input("Enter your choice: "))
+    if choice not in choices:
+        continue
     if choice == 1:
         chat.main()
     elif choice == 2:
