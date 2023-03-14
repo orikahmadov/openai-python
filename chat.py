@@ -44,11 +44,13 @@ def main():
                 break
 
 def save_conversation():
-    with open("conversation.txt", "a") as f: # a for append
-        f.write(timestamp + "\n")
-        for message in conversation:
-            f.write(message["role"] + ": " + message["content"] + "\n")
+    with open("conversation.txt","a") as f:
+        f.write(f"{timestamp}\n")
+        for i in conversation:
+            f.write(f"{i['role']}: {i['content']}\n")
         f.write("\n")
+
+    print("Conversation saved successfully!")
 
 
 

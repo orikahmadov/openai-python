@@ -7,6 +7,9 @@ name = "pypi"
 openai = "*"
 rich = "*"
 pyinstaller = "*"
+pypdf = "*"
+pypdf2 = "*"
+requests = "*"
 
 [dev-packages]
 
