@@ -29,7 +29,7 @@ def main():
     pdf_file = open(file_name, 'rb')
     pdf_reader = PyPDF2.PdfReader(pdf_file)
     # extract text from pdf file
-    page_range = range(start_page - 1, end_page)
+    page_range = range(start_page - 1, end_page +1)
     text = ''
     for page_number in page_range:
         page = pdf_reader.pages[page_number]
@@ -37,19 +37,23 @@ def main():
     # split text into 500 word chunks
     text_chunks = text.split() # split text into words
     text_chunks = [' '.join(text_chunks[i:i+300]) for i in range(0, len(text_chunks), 300)] # split text into 500 word chunks
-    for chunk in text_chunks: # loop through each chunk
-        conversation.append({"role": "user", "content": chunk  + " " + user_prompt}) # add user input to conversation
-        console.log("[bold red]User Input:[/bold red]", chunk + " " + user_prompt) # show user input
-        print("\n") # add a new line
-        response = openai.ChatCompletion.create( # get bot reply
-           model = "gpt-3.5-turbo", 
-           messages=conversation
-        )
-        reply_bot = response["choices"][0]["message"]["content"] # get bot reply
-        console.log("[bold white]Bot Reply: ", reply_bot, style=bot_style) # show bot reply
-        print("\n")
-        conversation.append({"role": "system", "content": reply_bot})
+    with open("bot_replies.txt", "w",encoding="utf-8") as f:
+        for chunk in text_chunks: # loop through each chunk
+            conversation.append({"role": "user", "content": chunk  + " " + user_prompt}) # add user input to conversation
+            console.log("[bold red]User Input:[/bold red]", chunk + " " + user_prompt) # show user input
+            print("\n") # add a new line
+            response = openai.ChatCompletion.create( # get bot reply
+               model = "gpt-3.5-turbo", 
+               messages=conversation
+            )
+            reply_bot = response["choices"][0]["message"]["content"] # get bot reply
+            console.log("[bold white]Bot Reply: ", reply_bot, style=bot_style,) # show bot reply
+            print("\n")
+            conversation.append({"role": "system", "content": reply_bot})
+            f.write(reply_bot + "\n") # write bot reply to file
     print(f"Finished summarizing text from {file_name} from page {start_page} to page {end_page}.\nIf you want to keep the conversation start program again and give new 6 pages\n E.g lets say you set the start page 1 and end page 6.\nYou must now set the start page 7 and end page 13 and so on.")
+    print("You can find the bot replies in bot_replies.txt file.")
+    
 
         
                 
