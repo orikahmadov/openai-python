@@ -1,6 +1,8 @@
 import chat
 import image,essay
 from rich.console import Console,Style
+from pyarmor.pyarmor import main_entry
+from pyarmor import __version__ 
 
 console = Console()
 
