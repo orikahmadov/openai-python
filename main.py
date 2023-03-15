@@ -1,9 +1,7 @@
 import chat
 import image,essay
 from rich.console import Console,Style
-from pyarmor.pyarmor import main_entry
-from pyarmor import __version__ 
-
+import programmer_assistant
 console = Console()
 
 while True:
@@ -11,7 +9,8 @@ while True:
     console.print("1. Chat",style="bold green")
     console.print("2. Create an image",style="bold cyan")
     console.log("3. Create Essay",style="bold yellow")
-    console.print("4. Exit",style="bold red")
+    console.print("4. Programming Assistant",style="bold magenta)
+    console.print("5. Exit",style="bold red")
     print("\n")
     choice = int(input("Enter your choice: "))
     if choice == 1:
@@ -21,6 +20,8 @@ while True:
     elif choice == 3:
         essay.main()
     elif choice == 4:
+        programmer_assistant.main()
+    elif choice == 5:
         print("Thank you for using our program!")
         break
     else:
