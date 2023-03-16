@@ -2,7 +2,6 @@ import os
 import openai
 from datetime import datetime
 from rich.console import Console,Style
-from rich.prompt import Prompt
 
 API_KEY =  os.environ["OPENAI_API_KEY"]
 openai.api_key = API_KEY
@@ -25,7 +24,7 @@ def main():
     console.log("Welcome to the Openai chat!\nIf you want to quit the chat just type 'exit!'\nIf you want to quit chat and save conversation just press 'ctrl + c' and answer 'y'\n",style="yellow")
     while True:
         try:
-            user_input = Prompt.ask("User: ")
+            user_input = input("User: ")
             if user_input == "exit!":
                 break
             conversation.append({"role": "user", "content": user_input})
@@ -42,23 +41,24 @@ def main():
         except KeyboardInterrupt:
             save_conversationn = input("Do you want to save the conversation? (y/n): ")
             if save_conversationn.lower() == "y":
-                save_conversation()
+                save_conversation(name =hash(user_input), conversation=conversation)
                 print("Thanks for chatting with me!")
                 break
             else:
                 print("Thanks for chatting with me!")
                 break
 
-def save_conversation():
-    with open("conversation.txt","a") as f:
-        f.write(f"{timestamp}\n")
+def save_conversation(name,conversation):
+    if os.path.exists("programmer_assitant_conversations"):
+        pass
+    else:
+        os.mkdir("programmer_assitant_conversations")
+    with open(f"programmer_assitant_conversations/{name}.txt","w") as f:
+        f.write(f"Conversation started at {timestamp}\n")
         for i in conversation:
             f.write(f"{i['role']}: {i['content']}\n")
-        f.write("\n")
 
-    print("Conversation saved successfully!")
-
-
-
+        print("Conversation saved successfully!")
+        
 if __name__ == "__main__":
     main()

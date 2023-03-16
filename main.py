@@ -1,6 +1,9 @@
 import chat
-import image,essay
+import image
+import summarize_text
 import programmer_assistant
+import essay_outliner
+import generate_essay_from_outline
 from rich.console import Console,Style
 
 console = Console()
@@ -11,7 +14,9 @@ while True:
     console.print("2. Create an image (E.g Draw a cat in Dali style)",style="bold cyan")
     console.print("3. Summarize and Simplify text from PDF (Pass pdf as input)",style="bold yellow")
     console.print("4. Create a program (Writes pseudecode and program)",style="bold magenta")
-    console.print("5. Exit",style="bold red")
+    console.print("5. Create an essay (Writes an essay outline)",style="bold blue")
+    console.print("6. Write essay based on outline file",style="bold purple")
+    console.print("7. Exit",style="bold red")
     print("\n")
     choice = int(input("Enter your choice: "))
     if choice == 1:
@@ -19,10 +24,15 @@ while True:
     elif choice == 2:
         image.create_an_image()
     elif choice == 3:
-        essay.main()
+        summarize_text.main()
     elif choice == 4:
         programmer_assistant.main()
     elif choice == 5:
+        essay_outliner.main()
+    elif choice == 6:
+        generate_essay_from_outline.main()
+    elif choice == 7:
+        console.print("Thank you for using the chat!",style="bold red")
         break
     else:
         console.print("Invalid choice!",style="bold red")
