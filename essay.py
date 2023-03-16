@@ -37,7 +37,7 @@ def main():
     # split text into 500 word chunks
     text_chunks = text.split() # split text into words
     text_chunks = [' '.join(text_chunks[i:i+300]) for i in range(0, len(text_chunks), 300)] # split text into 500 word chunks
-    with open("bot_replies.txt", "w",encoding="utf-8") as f:
+    with open("bot_replies.txt", "a",encoding="utf-8") as f:
         for chunk in text_chunks: # loop through each chunk
             conversation.append({"role": "user", "content": chunk  + " " + user_prompt}) # add user input to conversation
             console.log("[bold red]User Input:[/bold red]", chunk + " " + user_prompt) # show user input

@@ -41,17 +41,6 @@ def create_an_image():
                         handler.write(image_data)
                 print(f"Image created {os.path.abspath('images')}")
                 clean_up = input("Do you want to delete the images? (y/n): ")
-                if clean_up.lower() == "y":
-                    #delete all the images in the images folder
-                    for file in os.listdir("images"):
-                        os.remove(os.path.join("images", file))
-                    print("Images deleted")
-                    another_image = input("Do you want to create another image? (y/n): ")
-                    if another_image.lower() == "y":
-                        continue
-                    else:
-                        print("Bye!")
-                        break
             else:
                 print("Sorry, I couldn't create an image for you.")
         except KeyboardInterrupt:
