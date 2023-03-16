@@ -40,7 +40,6 @@ def create_an_image():
                     with open(f"images/{name_of_image}.jpg", "wb") as handler:
                         handler.write(image_data)
                 print(f"Image created {os.path.abspath('images')}")
-                clean_up = input("Do you want to delete the images? (y/n): ")
             else:
                 print("Sorry, I couldn't create an image for you.")
         except KeyboardInterrupt:
