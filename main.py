@@ -4,13 +4,13 @@ import summarize_text
 import programmer_assistant
 import essay_outliner
 import generate_essay_from_outline
-from rich.console import Console,Style
+from rich.console import Console
 
 console = Console()
 
 while True:
     console.print("Welcome to the Openai chat! (General Chat)",style="bold yellow")
-    console.print("1. Chat (Chat with the bot about anything)",style="bold green")
+    console.print("1.(GPT-3.4 Turbo) Chat (Chat with the bot about anything)",style="bold green")
     console.print("2. Create an image (E.g Draw a cat in Dali style)",style="bold cyan")
     console.print("3. Summarize and Simplify text from PDF (Pass pdf as input)",style="bold yellow")
     console.print("4. Create a program (Writes pseudecode and program)",style="bold magenta")
@@ -22,7 +22,7 @@ while True:
     if choice == 1:
         chat.main()
     elif choice == 2:
-        image.create_an_image()
+        image.main()
     elif choice == 3:
         summarize_text.main()
     elif choice == 4:
@@ -32,8 +32,10 @@ while True:
     elif choice == 6:
         generate_essay_from_outline.main()
     elif choice == 7:
-        console.print("Thank you for using the chat!",style="bold red")
+        console.print("Thank you for using the Openai chat!",style="bold green")
         break
+
+
     else:
         console.print("Invalid choice!",style="bold red")
 
