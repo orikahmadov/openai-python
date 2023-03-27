@@ -8,7 +8,7 @@ from rich.console import Console
 
 console = Console()
 
-while True:
+while True: #Main menu
     console.print("Welcome to the Openai chat! (General Chat)",style="bold yellow")
     console.print("1.(GPT-3.4 Turbo) Chat (Chat with the bot about anything)",style="bold green")
     console.print("2. Create an image (E.g Draw a cat in Dali style)",style="bold cyan")
